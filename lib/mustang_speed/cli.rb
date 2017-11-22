@@ -8,8 +8,8 @@ class MustangSpeed::CLI
   end
 
   def run
+    MustangSpeed::MustangScraper.years_available
     MustangSpeed::MustangScraper.mustang_scrape
-
   end
 
   def opening
