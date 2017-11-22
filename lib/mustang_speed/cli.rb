@@ -4,7 +4,7 @@ class MustangSpeed::CLI
     opening
     run
     play
-    finish
+    the_end
   end
 
   def run
@@ -18,6 +18,19 @@ class MustangSpeed::CLI
     puts " "
     puts "Welcome to the Mustang 0-60 and 1/4 mile times, app."
   end
+
+
+  def play_again?
+    puts " "
+    puts "Would you like to pick a different year? Y or N?"
+    input = gets.chomp.downcase
+    if input == "y"
+      play
+    else
+      the_end
+    end
+  end
+
 
   def find_mustang_by_year(input)
     selected_year = []
@@ -40,15 +53,21 @@ class MustangSpeed::CLI
       puts "That year is not available."
       play
     end
+    if @mustang.length <= 1
+      puts " "
+      puts "Only one trim available for the selected year:"
+      puts " "
+      puts "#{@mustang[0].name}:"
+      puts "0-60: #{@mustang[0].to_sixty}"
+      puts "1/4 mile: #{@mustang[0].quarter_mile}"
+      play_again?
+    else
+      #display_specs_by_trim
+    end
+    binding.pry
   end
-    #shows list of available mustang trims based on user input
-    # enter a number from numbered list of mustang trims from above year
-    # get 0-60 and 1/4 mile times displayed
-    # asks to pick new trim from same year
-    # asks for a new year if above is no
-    # ends if above is no
 
-  def finish
+  def the_end
     puts " "
     puts "Thanks for playing! Have a nice day."
     exit
