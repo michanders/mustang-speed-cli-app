@@ -50,6 +50,5 @@ class MustangSpeed::MustangScraper
         i += 1
       end
     end
-    binding.pry
   end
 end
