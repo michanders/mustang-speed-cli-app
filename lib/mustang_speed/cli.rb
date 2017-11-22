@@ -10,6 +10,8 @@ class MustangSpeed::CLI
   def run
     MustangSpeed::MustangScraper.years_available
     MustangSpeed::MustangScraper.mustang_scrape
+    @years = MustangSpeed::MustangScraper.years
+    @all = MustangSpeed::MustangScraper.all
   end
 
   def opening

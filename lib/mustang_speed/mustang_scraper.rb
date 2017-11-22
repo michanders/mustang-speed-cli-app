@@ -35,7 +35,7 @@ class MustangSpeed::MustangScraper
 
   def self.mustang_scrape
     doc = Nokogiri::HTML(open("https://www.0-60specs.com/ford-mustang-0-60-times/"))
-    i = 0
+    i = -2
     doc.css(".row tr").each do |stang|
       if stang.css(".column-6").text.length > 15
         mustang = self.new
@@ -52,5 +52,4 @@ class MustangSpeed::MustangScraper
     end
     binding.pry
   end
-
 end
