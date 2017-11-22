@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "mustang_speed"
+
+
+MustangSpeed::CLI.new.start
