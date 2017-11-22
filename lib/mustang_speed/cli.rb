@@ -4,7 +4,6 @@ class MustangSpeed::CLI
     opening
     run
     play
-    the_end
   end
 
   def run
@@ -32,6 +31,29 @@ class MustangSpeed::CLI
   end
 
 
+  def display_specs_by_trim
+    i = 1
+    puts " "
+    puts "Enter: #{i}-#{@mustang.length} to display 0-60 and 1/4 mile times."
+    puts " "
+    @mustang.each {|stang| puts "#{i}: #{stang.name}"; i += 1}
+    puts " "
+    input = gets.to_i
+    mustang = @mustang[input - 1]
+    if input > 0 && input <= @mustang.length
+      puts " "
+      puts "#{mustang.name}:"
+      puts "0-60: #{mustang.to_sixty}"
+      puts "1/4 mile: #{mustang.quarter_mile}"
+    else
+      puts " "
+      puts "That trim is not available. Please pick another trim."
+      display_specs_by_trim
+    end
+    play_again?
+  end
+
+
   def find_mustang_by_year(input)
     selected_year = []
     @all.each do |mustang|
@@ -41,6 +63,7 @@ class MustangSpeed::CLI
     end
     selected_year
   end
+
 
   def play
     puts " "
@@ -62,7 +85,7 @@ class MustangSpeed::CLI
       puts "1/4 mile: #{@mustang[0].quarter_mile}"
       play_again?
     else
-      #display_specs_by_trim
+      display_specs_by_trim
     end
     binding.pry
   end
