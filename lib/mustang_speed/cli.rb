@@ -6,12 +6,14 @@ class MustangSpeed::CLI
     play
   end
 
+
   def run
     MustangSpeed::MustangScraper.years_available
     MustangSpeed::MustangScraper.mustang_scrape
     @years = MustangSpeed::MustangScraper.years
     @all = MustangSpeed::MustangScraper.all
   end
+
 
   def opening
     puts " "
@@ -27,6 +29,18 @@ class MustangSpeed::CLI
       play
     else
       the_end
+    end
+  end
+
+
+  def play_again_same_year
+    puts " "
+    puts "Would you like to pick a different trim of the same year? Y or N?"
+    input = gets.chomp.downcase
+    if input == "y"
+      display_specs_by_trim
+    else
+      play_again?
     end
   end
 
@@ -50,7 +64,7 @@ class MustangSpeed::CLI
       puts "That trim is not available. Please pick another trim."
       display_specs_by_trim
     end
-    play_again?
+    play_again_same_year
   end
 
 
@@ -90,10 +104,10 @@ class MustangSpeed::CLI
     binding.pry
   end
 
+
   def the_end
     puts " "
     puts "Thanks for playing! Have a nice day."
     exit
   end
-
 end
