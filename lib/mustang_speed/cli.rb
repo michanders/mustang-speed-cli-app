@@ -2,9 +2,14 @@ class MustangSpeed::CLI
 
   def start
     opening
-    #run scraper to store objects in all
+    run
     play
     finish
+  end
+
+  def run
+    MustangSpeed::MustangScraper.mustang_scrape
+
   end
 
   def opening
@@ -20,6 +25,12 @@ class MustangSpeed::CLI
     # asks to pick new trim from same year
     # asks for a new year if above is no
     # ends if above is no
+  end
+
+  def finish
+    puts " "
+    puts "Thanks for playing! Have a nice day."
+    exit
   end
 
 end
