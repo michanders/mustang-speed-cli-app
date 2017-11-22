@@ -101,7 +101,6 @@ class MustangSpeed::CLI
     else
       display_specs_by_trim
     end
-    binding.pry
   end
 
 
