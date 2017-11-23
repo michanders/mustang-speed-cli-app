@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-run $ ruby bin/mustang-speed. Follow the prompt.
+run: $ ruby mustang_speed/bin/mustang-speed
 
 ## Development
 
